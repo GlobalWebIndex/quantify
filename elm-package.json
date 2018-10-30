@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "summary": "Quantify list, set, dict or a single value according to a predicate",
     "repository": "https://github.com/GlobalWebIndex/quantify.git",
     "license": "BSD3",
