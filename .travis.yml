@@ -40,5 +40,5 @@ install:
   - pushd tests && elm make --yes && popd
 
 script:
-  - elm make
+  - elm make --yes
   - npm test
