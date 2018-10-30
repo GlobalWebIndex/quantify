@@ -80,6 +80,8 @@ listHelper quantifierSoFar predicate list =
 
 {-| Quantify a set according to a predicate.
 
+    import Set
+
     isEven : Int -> Bool
     isEven number =
         number % 2 == 0
@@ -112,6 +114,8 @@ set predicate xs =
 
 
 {-| Quantify a dict according to a predicate. The predicate gets both the key and the value.
+
+    import Dict
 
     isEven : Int -> Bool
     isEven number =
@@ -165,10 +169,10 @@ single predicate x =
 {-| Quantify a Bool value according to a predicate.
 
     Quantify.fromBool True
-    --> None
+    --> All
 
     Quantify.fromBool False
-    --> All
+    --> None
 
 -}
 fromBool : Bool -> Quantifier

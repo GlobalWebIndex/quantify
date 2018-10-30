@@ -1,0 +1,20 @@
+{
+  "name": "quantify",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GlobalWebIndex/quantify/"
+  },
+  "author": "GWI",
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "test": "yarn elm-verify-examples --elm-test node_modules/.bin/elm-test && yarn elm-test",
+    "test:w": "node_modules/chokidar-cli/index.js \"**/*.elm\" -c \"yarn test\""
+  },
+  "devDependencies": {
+    "chokidar-cli": "^1.2.1",
+    "elm-test": "^0.18.13-beta3",
+    "elm-verify-examples": "^2.3.1",
+    "elm": "0.18.0"
+  }
+}
