@@ -8,7 +8,7 @@
   "author": "GWI",
   "license": "BSD-3-Clause",
   "scripts": {
-    "test": "yarn elm-verify-examples --elm-test node_modules/.bin/elm-test && yarn elm-test",
+    "test": "./node_modules/.bin/elm-verify-examples --elm-test node_modules/.bin/elm-test && ./node_modules/.bin/elm-test",
     "test:w": "node node_modules/chokidar-cli/index.js \"**/*.elm\" -c \"yarn test\""
   },
   "devDependencies": {
