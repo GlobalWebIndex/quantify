@@ -8,8 +8,8 @@
   "author": "GWI",
   "license": "BSD-3-Clause",
   "scripts": {
-    "test": "node_modules/.bin/elm-verify-examples --elm-test=./node_modules/.bin/elm-test && sh node_modules/.bin/elm-test",
-    "test:w": "node node_modules/chokidar-cli/index.js \"**/*.elm\" -c \"npm run test\""
+    "test": "sh ./node_modules/.bin/elm-verify-examples --elm-test=./node_modules/.bin/elm-test && sh ./node_modules/.bin/elm-test",
+    "test:w": "node ./node_modules/chokidar-cli/index.js \"**/*.elm\" -c \"npm run test\""
   },
   "devDependencies": {
     "chokidar-cli": "1.2.1",
