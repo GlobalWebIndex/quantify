@@ -1,4 +1,4 @@
-module Tests exposing (..)
+module Tests exposing (isEven, isEvenValue, testDict, testList, testSet, testSingle)
 
 import Dict exposing (Dict)
 import Expect
@@ -9,7 +9,7 @@ import Test exposing (..)
 
 isEven : Int -> Bool
 isEven number =
-    number % 2 == 0
+    modBy 2 number == 0
 
 
 testList : Test

@@ -1,6 +1,9 @@
-module Quantify exposing (Quantifier(..), dict, fromBool, list, set, single)
+module Quantify exposing
+    ( Quantifier(..)
+    , list, set, dict, single, fromBool
+    )
 
-{-| Quantify list, set, dict or a single value according to a predicate
+{-| Quantify List, Set, Dict or a single value according to a predicate
 
 
 # Type
@@ -30,7 +33,7 @@ type Quantifier
 
     isEven : Int -> Bool
     isEven number =
-        number % 2 == 0
+        modBy 2 number == 0
 
     Quantify.list isEven [1,3,5,7]
     --> None
@@ -56,8 +59,8 @@ list predicate xs =
 
 
 listHelper : Quantifier -> (a -> Bool) -> List a -> Quantifier
-listHelper quantifierSoFar predicate list =
-    case list of
+listHelper quantifierSoFar predicate l =
+    case l of
         [] ->
             quantifierSoFar
 
@@ -84,7 +87,7 @@ listHelper quantifierSoFar predicate list =
 
     isEven : Int -> Bool
     isEven number =
-        number % 2 == 0
+        modBy 2 number == 0
 
     Quantify.set isEven (Set.fromList [1,3,5,7])
     --> None
@@ -107,8 +110,10 @@ set predicate xs =
     in
     if Set.isEmpty satisfying then
         None
+
     else if Set.isEmpty notSatisfying then
         All
+
     else
         Some
 
@@ -119,7 +124,7 @@ set predicate xs =
 
     isEven : Int -> Bool
     isEven number =
-        number % 2 == 0
+        modBy 2 number == 0
 
     Quantify.dict (\key value -> isEven value) (Dict.fromList [(0,1),(1,3),(2,5),(3,7)])
     --> None
@@ -142,8 +147,10 @@ dict predicate xs =
     in
     if Dict.isEmpty satisfying then
         None
+
     else if Dict.isEmpty notSatisfying then
         All
+
     else
         Some
 
@@ -152,7 +159,7 @@ dict predicate xs =
 
     isEven : Int -> Bool
     isEven number =
-        number % 2 == 0
+        modBy 2 number == 0
 
     Quantify.single isEven 1
     --> None
@@ -179,5 +186,6 @@ fromBool : Bool -> Quantifier
 fromBool bool =
     if bool then
         All
+
     else
         None

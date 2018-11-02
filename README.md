@@ -16,7 +16,7 @@ type Quantifier
 ```elm
 isEven : Int -> Bool
 isEven number =
-    number % 2 == 0
+    modBy 2 number == 0
 
 Quantify.list isEven [1,3,5,7]
 --> None

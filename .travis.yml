@@ -3,20 +3,19 @@ sudo: false
 os:
   - linux
 
+language: node_js
+node_js: node
+
 cache:
   directories:
-    - test/elm-stuff/build-artifacts
+    - elm-stuff/build-artifacts
+    - elm-stuff/packages
     - sysconfcpus
-
-language: node_js
-
-env:
-  matrix:
-    - ELM_VERSION=0.18.0 TARGET_NODE_VERSION=node
-    - ELM_VERSION=0.18.0 TARGET_NODE_VERSION=4.8
 
 before_install:
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+install:
   - | # epic build time improvement - see https://github.com/elm-lang/elm-compiler/issues/1473#issuecomment-245704142
     if [ ! -d sysconfcpus/bin ];
     then
@@ -26,19 +25,12 @@ before_install:
       make && make install;
       cd ..;
     fi
-
-install:
-  - nvm install $TARGET_NODE_VERSION
-  - nvm use $TARGET_NODE_VERSION
-  - node --version
-  - npm --version
-  - npm install -g elm@$ELM_VERSION
-  - mv $(npm config get prefix)/bin/elm $(npm config get prefix)/bin/elm-old
-  - printf '%s\n\n' '#!/bin/bash' 'echo "Running elm-make with sysconfcpus -n 2"' '$TRAVIS_BUILD_DIR/sysconfcpus/bin/sysconfcpus -n 2 elm-old "$@"' > $(npm config get prefix)/bin/elm
-  - chmod +x $(npm config get prefix)/bin/elm
   - npm install
-  - pushd tests && elm make --yes && popd
+  - mv $(npm bin)/elm $(npm bin)/elm-old
+  - printf '%s\n\n' '#!/bin/bash' 'echo "Running elm make with sysconfcpus -n 2"' '$TRAVIS_BUILD_DIR/sysconfcpus/bin/sysconfcpus -n 2 npx elm-old "$@"' > $(npm bin)/elm
+  - chmod +x $(npm bin)/elm
 
 script:
-  - elm make --yes
+  - elm-format --validate src tests
+  - npx elm make
   - npm test
