@@ -24,8 +24,8 @@ install:
       cd ..;
     fi
   - npm install
-  - printf '%s\n\n' '#!/bin/bash' 'echo "Running elm-make with sysconfcpus -n 2"' '$TRAVIS_BUILD_DIR/sysconfcpus/bin/sysconfcpus -n 2 npx elm-old "$@"' > $(npm bin)/elm
   - mv $(npm bin)/elm $(npm bin)/elm-old
+  - printf '%s\n\n' '#!/bin/bash' 'echo "Running elm make with sysconfcpus -n 2"' '$TRAVIS_BUILD_DIR/sysconfcpus/bin/sysconfcpus -n 2 npx elm-old "$@"' > $(npm bin)/elm
 
 script:
   - npx elm make
