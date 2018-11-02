@@ -31,5 +31,6 @@ install:
   - chmod +x $(npm bin)/elm
 
 script:
+  - elm-format --validate src tests
   - npx elm make
   - npm test
