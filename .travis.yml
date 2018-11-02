@@ -29,7 +29,6 @@ install:
   - mv $(npm bin)/elm $(npm bin)/elm-old
   - printf '%s\n\n' '#!/bin/bash' 'echo "Running elm make with sysconfcpus -n 2"' '$TRAVIS_BUILD_DIR/sysconfcpus/bin/sysconfcpus -n 2 npx elm-old "$@"' > $(npm bin)/elm
   - chmod +x $(npm bin)/elm
-  - cat $(npm bin)/elm
 
 script:
   - npx elm make
