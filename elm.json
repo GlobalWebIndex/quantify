@@ -3,7 +3,7 @@
     "name": "GlobalWebIndex/quantify",
     "summary": "Quantify List, Set, Dict or a single value according to a predicate",
     "license": "BSD-3-Clause",
-    "version": "2.0.0",
+    "version": "1.0.0",
     "exposed-modules": [
         "Quantify"
     ],
