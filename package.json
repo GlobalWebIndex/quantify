@@ -10,10 +10,9 @@
   "scripts": {
     "test": "npx elm-test",
     "verify-examples": "npx elm-verify-examples --elm-test=./node_modules/.bin/elm-test",
-    "test:w": "node ./node_modules/chokidar-cli/index.js \"**/*.elm\" -c \"npm run test\""
+    "test:w": "elm-test --watch"
   },
   "devDependencies": {
-    "chokidar-cli": "1.2.1",
     "elm": "^0.19.0-no-deps",
     "elm-format": "^0.8.1",
     "elm-test": "^0.19.0-rev6",
