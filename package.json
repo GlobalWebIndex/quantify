@@ -9,7 +9,7 @@
   "license": "BSD-3-Clause",
   "scripts": {
     "test": "npx elm-test",
-    "verify-examples": "npx elm-verify-examples --elm-test=./node_modules/.bin/elm-test",
+    "verify-examples": "npx elm-verify-examples --run-tests",
     "test:w": "elm-test --watch"
   },
   "devDependencies": {
